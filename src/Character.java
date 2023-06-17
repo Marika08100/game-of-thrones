@@ -1,5 +1,7 @@
 package src;
 
+import src.Combat.RangedWeapon;
+
 public class Character implements Mortal {
     private String name;
     private final String birthPlace;
@@ -53,6 +55,21 @@ public class Character implements Mortal {
     @Override
     public void die() {
         decreasePopulation();
+    }
+
+    public boolean hasWeapons() {
+        return true;
+    }
+
+    public void addWeapon(RangedWeapon valyrianSteelDagger) {
+        
+    }
+
+    public void removeWeapon(String stolenBow) {
+    }
+
+    public boolean getWeapons() {
+        return true;
     }
 }
 
