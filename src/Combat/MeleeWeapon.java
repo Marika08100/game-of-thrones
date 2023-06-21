@@ -12,6 +12,10 @@ public class MeleeWeapon extends Weapon {
 
     }
 
+    public MeleeWeaponType getType() {
+        return type;
+    }
+
     @Override
     public void attack() {
         System.out.println("Melee attack with " + getName() + "! Damage: " + getDamage());
@@ -20,7 +24,7 @@ public class MeleeWeapon extends Weapon {
     }
 
     @Override
-    public String toString() {
+    public  String toString() {
         return "MeleeWeapon{" +
                 "type=" + type +
                 ", name='" + name + '\'' +
