@@ -2,17 +2,24 @@ package src;
 
 import src.Combat.MeleeWeapon;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Character implements Mortal {
     private String name;
     private final String birthPlace;
     private Gender gender;
     private static int worldPopulation = 0;
+    private List<Weapon> weapons;
+
 
     public Character(String name, String birthPlace, Gender gender) {
         worldPopulation++;
         this.name = name;
         this.birthPlace = birthPlace;
         this.gender = gender;
+        this.weapons = new ArrayList<>();
+
 
     }
 
@@ -34,14 +41,16 @@ public class Character implements Mortal {
     }
 
     public boolean hasWeapons() {
-        return false;
+        return !weapons.isEmpty();
     }
 
-    public void addWeapon(MeleeWeapon valyrianSteelDagger) {
+    public void addWeapon(Weapon valyrianSteelDagger) {
+        weapons.add(valyrianSteelDagger);
 
     }
 
     public void removeWeapon(String stolenBow) {
+        weapons.remove(stolenBow);
     }
 
     public void setName(String name) {
@@ -67,9 +76,14 @@ public class Character implements Mortal {
         }
     }
 
-    public String getWeapons() {
-        return toString();
+    public List<Weapon> getWeapons() {
+        return weapons;
     }
+    @Override
+    public String toString() {
+        return weapons.toString();
+    }
+
 
 }
 

@@ -39,11 +39,7 @@ public enum House {
 
     @Override
     public String toString() {
-        return "House{=" + this.name() +
-                " englishName='" + englishName + '\'' +
-                ", hungarianName='" + hungarianName + '\'' +
-                ", sigil='" + sigil + '\'' +
-                '}';
+        return name().charAt(0) + name().substring(1).toLowerCase();
     }
 
 

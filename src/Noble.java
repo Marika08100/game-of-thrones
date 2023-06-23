@@ -4,12 +4,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Noble extends Character implements Mortal {
-    private final Set<House> houses = new HashSet<>();
+    private Set<House> houses = new HashSet<>();
     private int wealth;
 
     public Noble(String name, String birthPlace, Gender gender, Set<House> houses, int wealth) {
         super(name, birthPlace, gender);
         this.wealth = wealth;
+        this.houses = new HashSet<>(houses);
+
     }
 
     public Set<House> getHouses() {
@@ -24,6 +26,10 @@ public class Noble extends Character implements Mortal {
         houses.remove(house);
     }
 
+    public void setHouses(Set<House> houses) {
+        this.houses = new HashSet<>(houses);
+    }
+
 
     public int getWealth() {
         return wealth;
@@ -33,21 +39,27 @@ public class Noble extends Character implements Mortal {
         this.wealth = wealth;
     }
 
-
-    public String getHousesAsString() { // Cersei of house LANNISTER has 500000 gold dragons.
-        String outHouses = "";
-        for (House house : houses) {
-            outHouses += house + ", ";
-        }
-        return outHouses.substring(0, outHouses.length() - 1);
-
-    }
-
     @Override
     public String toString() {
-        return "Name= " + getName() + "of houses "
-                + getHousesAsString() + " has" + getWealth() + " gold dragons.";
+        return "Name=" + getName() + " of houses "
+                + getHousesAsString() + " has " +
+                getWealth() + " gold dragons.";
     }
+
+    public String getHousesAsString() {
+        if (houses.isEmpty()) {
+            return "";
+        }
+
+        StringBuilder outHouses = new StringBuilder();
+        for (House house : houses) {
+            outHouses.append(house).append(", ");
+        }
+        outHouses.delete(outHouses.length() - 2, outHouses.length());
+
+        return outHouses.toString();
+    }
+
 
 
     @Override
