@@ -1,23 +1,35 @@
 package src.Combat;
 
 import src.Combat.Type.RangedWeaponType;
-import src.Weapon;
+import src.character.GameCharacter;
 
 public class RangedWeapon extends Weapon {
     private RangedWeaponType type;
     private int ammunition;
 
-    public RangedWeapon(String name, int damage, int range,RangedWeaponType type, int ammunition) {
+    public RangedWeapon(String name, int damage, int range, int ammunition, RangedWeaponType type) {
         super(name, damage, range);
+        this.range = range;
         this.type = type;
         this.ammunition = ammunition;
-
     }
 
-    @Override
     public void attack() {
         System.out.println("Ranged attack with " + getName() + "! Damage: " + getDamage());
         ammunition--;
+    }
+
+    @Override
+    public void attack(GameCharacter attacker, GameCharacter target) {
+        int damage = this.getDamage();
+        target.takeDamage(damage);
+        System.out.println(attacker.getName() + " attacked " + target.getName() + " with a ranged weapon (" + this.getName() + ") and dealt " + damage + " damage.");
+        ammunition--;
+    }
+
+    @Override
+    public boolean isRanged() {
+        return true;
     }
 
     public int getAmmunition() {
@@ -32,9 +44,20 @@ public class RangedWeapon extends Weapon {
     public String toString() {
         return "RangedWeapon{" +
                 "type='" + type + '\'' +
-                ", name=" + name +
+                ", name='" + name + '\'' +
                 ", damage=" + damage +
-                ", range =" + range +
+                ", range=" + range +
+                ", ammunition=" + ammunition +
                 '}';
+    }
+
+    @Override
+    protected int calculateMeleeDamage(GameCharacter attacker) {
+        return 0;
+    }
+
+    @Override
+    protected int calculateRangedDamage(GameCharacter attacker) {
+        return 0;
     }
 }

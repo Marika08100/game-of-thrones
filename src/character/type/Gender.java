@@ -1,4 +1,4 @@
-package src;
+package src.character.type;
 
 public enum Gender {
     MALE,
