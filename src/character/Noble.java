@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class Noble extends GameCharacter implements Mortal {
+public class Noble extends Character implements Mortal {
     private Set<House> houses = new HashSet<>();
     private final Map<String, Integer> coins = new HashMap<>();
 

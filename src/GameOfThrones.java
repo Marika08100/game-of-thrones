@@ -4,7 +4,7 @@ import src.Combat.MeleeWeapon;
 import src.Combat.RangedWeapon;
 import src.Combat.Type.MeleeWeaponType;
 import src.Combat.Type.RangedWeaponType;
-import src.character.GameCharacter;
+import src.character.Character;
 import src.character.Noble;
 import src.character.type.Gender;
 import src.character.type.House;
@@ -13,7 +13,7 @@ import java.util.Set;
 
 public class GameOfThrones {
     public static void main(String[] args) {
-        GameCharacter arya = new Noble("Arya", "Winterfell", Gender.FEMALE, Set.of(House.STARK));
+        Character arya = new Noble("Arya", "Winterfell", Gender.FEMALE, Set.of(House.STARK));
         System.out.println(arya.hasWeapons()); // False
 
         arya.addWeapon(new MeleeWeapon("Valyrian steel dagger", 20,5, MeleeWeaponType.DAGGER));

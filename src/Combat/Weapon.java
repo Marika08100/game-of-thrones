@@ -1,6 +1,6 @@
 package src.Combat;
 
-import src.character.GameCharacter;
+import src.character.Character;
 import src.character.FightType;
 
 public abstract class Weapon {
@@ -38,7 +38,7 @@ public abstract class Weapon {
         this.range = range;
     }
 
-    public abstract void attack(GameCharacter attacker, GameCharacter target);
+    public abstract void attack(Character attacker, Character target);
 
     public abstract boolean isRanged();
 
@@ -51,7 +51,7 @@ public abstract class Weapon {
                 '}';
     }
 
-    public void attack(GameCharacter attacker, GameCharacter target, FightType fightType) {
+    public void attack(Character attacker, Character target, FightType fightType) {
         String fightTypeName = fightType == FightType.MELEE ? "melee" : "ranged";
         System.out.println(attacker.getName() + " engages in " + fightTypeName + " combat with " + target.getName() + ".");
 
@@ -64,7 +64,7 @@ public abstract class Weapon {
         }
     }
 
-    protected abstract int calculateMeleeDamage(GameCharacter attacker);
+    protected abstract int calculateMeleeDamage(Character attacker);
 
-    protected abstract int calculateRangedDamage(GameCharacter attacker);
+    protected abstract int calculateRangedDamage(Character attacker);
 }

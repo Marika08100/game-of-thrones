@@ -2,12 +2,11 @@ package src.character;
 
 import src.character.type.Gender;
 import src.Combat.Weapon;
-import src.character.type.House;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameCharacter implements Mortal {
+public class Character implements Mortal {
     private String name;
     private final String birthPlace;
     private Gender gender;
@@ -16,7 +15,7 @@ public class GameCharacter implements Mortal {
     int health;
 
 
-    public GameCharacter(String name, String birthPlace, Gender gender) {
+    public Character(String name, String birthPlace, Gender gender) {
         worldPopulation++;
         this.name = name;
         this.birthPlace = birthPlace;
@@ -53,13 +52,13 @@ public class GameCharacter implements Mortal {
         weapons.remove(stolenBow);
     }
 
-    private void initiateFight(Weapon weapon, GameCharacter enemy, FightType fightType) {
+    private void initiateFight(Weapon weapon, Character enemy, FightType fightType) {
         String fightTypeName = fightType == FightType.MELEE ? "melee" : "ranged";
         System.out.println(this.getName() + " engages in " + fightTypeName + " combat with " + enemy.getName() + ".");
         weapon.attack(this, enemy);
     }
 
-    public void fight(GameCharacter enemy, FightType fightType) {
+    public void fight(Character enemy, FightType fightType) {
         if (this.hasWeapons()) {
             for (Weapon weapon : this.getWeapons()) {
                 if ((fightType == FightType.MELEE && !weapon.isRanged()) ||

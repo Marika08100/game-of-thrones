@@ -1,7 +1,7 @@
 package src.Combat;
 
 import src.Combat.Type.MeleeWeaponType;
-import src.character.GameCharacter;
+import src.character.Character;
 
 public class MeleeWeapon extends Weapon {
     private MeleeWeaponType type;
@@ -13,7 +13,7 @@ public class MeleeWeapon extends Weapon {
     }
 
     @Override
-    public void attack(GameCharacter attacker, GameCharacter target) {
+    public void attack(Character attacker, Character target) {
         int damage = this.getDamage();
         target.takeDamage(damage);
         System.out.println(attacker.getName() + " attacked " + target.getName() + " with a melee weapon (" + this.getName() + ") and dealt " + damage + " damage.");
@@ -35,12 +35,12 @@ public class MeleeWeapon extends Weapon {
     }
 
     @Override
-    protected int calculateMeleeDamage(GameCharacter attacker) {
+    protected int calculateMeleeDamage(Character attacker) {
         return 0;
     }
 
     @Override
-    protected int calculateRangedDamage(GameCharacter attacker) {
+    protected int calculateRangedDamage(Character attacker) {
         return 0;
     }
 }
