@@ -56,11 +56,11 @@ public abstract class Weapon {
         System.out.println(attacker.getName() + " engages in " + fightTypeName + " combat with " + target.getName() + ".");
 
         if (fightType == FightType.MELEE) {
-            int damage = calculateMeleeDamage(attacker); // Számítsd ki a melee támadás sebzését
-            target.takeDamage(damage); // Ellenfél sebződik a kapott sebzés mértékével
+            int damage = calculateMeleeDamage(attacker); 
+            target.takeDamage(damage); /l
         } else if (fightType == FightType.RANGED) {
-            int damage = calculateRangedDamage(attacker); // Számítsd ki a ranged támadás sebzését
-            target.takeDamage(damage); // Ellenfél sebződik a kapott sebzés mértékével
+            int damage = calculateRangedDamage(attacker); 
+            target.takeDamage(damage); 
         }
     }
 
